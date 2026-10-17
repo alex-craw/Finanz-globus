@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finanz-Globus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="stars"></canvas>
+<div id="globe"></div>
+<canvas id="hl"></canvas>
+
+<header class="panel brand">
+  <h1>Finanz-Globus</h1>
+  <p id="status">Lade Weltkarte …</p>
+  <p id="dbg" class="dbg"></p>
+</header>
+
+<aside class="panel controls" aria-label="Einstellungen">
+  <label class="sw"><input type="checkbox" id="optHeight" checked><i></i><span>Höhenrelief (Marktgewicht)</span></label>
+  <label class="sw"><input type="checkbox" id="optHot" checked><i></i><span>Firmensitze anzeigen</span></label>
+  <label class="sw"><input type="checkbox" id="optRotate" checked><i></i><span>Automatische Rotation</span></label>
+  <label class="sw"><input type="checkbox" id="optLegend" checked><i></i><span>Legende anzeigen</span></label>
+  <hr>
+  <label class="row">Skala ±<output id="rangeOut">3</output> %
+    <input type="range" id="optRange" min="1" max="5" step="0.5" value="3"></label>
+  <div class="colors">
+    <label>Verlust <input type="color" id="colDown" value="#e5484d"></label>
+    <label>Neutral <input type="color" id="colMid" value="#7b8494"></label>
+    <label>Gewinn <input type="color" id="colUp" value="#30a46c"></label>
+  </div>
+</aside>
+
+<section class="panel legend" id="legend" aria-label="Legende">
+  <div class="bar" id="legendBar"></div>
+  <div class="ticks"><span id="lgMin">-3 %</span><span>0 %</span><span id="lgMax">+3 %</span></div>
+  <p>Farbe: Tagesveränderung. Höhe: Marktgewicht des Landes. Klick auf Land oder Firma zentriert es.</p>
+</section>
+
+<section class="panel info" id="info" hidden aria-live="polite"></section>
+<div class="tip" id="tip" hidden></div>
+
+<script src="https://cdn.jsdelivr.net/npm/globe.gl@2"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
